@@ -47,6 +47,13 @@ public class AngelScriptSyntaxHighlighter extends SyntaxHighlighterBase {
     public static final TextAttributesKey BAD_CHARACTER =
             createTextAttributesKey("ANGELSCRIPT_BAD_CHARACTER", HighlighterColors.BAD_CHARACTER);
 
+    // Rider's C++ lexical keys, layered over the AngelScript ones: where the scheme styles them, .as text takes the C++
+    // look, otherwise the AngelScript key shows through. Looked up only, never registered with a fallback of ours.
+    private static final TextAttributesKey CPP_KEYWORD = TextAttributesKey.find("ReSharper.CPP_KEYWORD");
+    private static final TextAttributesKey CPP_LINE_COMMENT = TextAttributesKey.find("ReSharper.CPP_LINE_COMMENT");
+    private static final TextAttributesKey CPP_STRING = TextAttributesKey.find("ReSharper.CPP_STRING_LITERAL");
+    private static final TextAttributesKey CPP_OPERATOR = TextAttributesKey.find("ReSharper.CPP_OPERATOR_SIGN");
+
     private static final TokenSet OPERATORS = TokenSet.create(
             AngelScriptTokenTypes.PLUS, AngelScriptTokenTypes.MINUS, AngelScriptTokenTypes.STAR,
             AngelScriptTokenTypes.SLASH, AngelScriptTokenTypes.PERCENT, AngelScriptTokenTypes.STAR_STAR,
@@ -72,12 +79,12 @@ public class AngelScriptSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final TokenSet BRACE_TOKENS = TokenSet.create(
             AngelScriptTokenTypes.START_STATEMENT_BLOCK, AngelScriptTokenTypes.END_STATEMENT_BLOCK);
 
-    private static final TextAttributesKey[] KEYWORD_KEYS = pack(KEYWORD);
-    private static final TextAttributesKey[] COMMENT_KEYS = pack(COMMENT);
-    private static final TextAttributesKey[] STRING_KEYS = pack(STRING);
+    private static final TextAttributesKey[] KEYWORD_KEYS = pack(KEYWORD, CPP_KEYWORD);
+    private static final TextAttributesKey[] COMMENT_KEYS = pack(COMMENT, CPP_LINE_COMMENT);
+    private static final TextAttributesKey[] STRING_KEYS = pack(STRING, CPP_STRING);
     private static final TextAttributesKey[] NUMBER_KEYS = pack(NUMBER);
     private static final TextAttributesKey[] IDENTIFIER_KEYS = pack(IDENTIFIER);
-    private static final TextAttributesKey[] OPERATOR_KEYS = pack(OPERATOR);
+    private static final TextAttributesKey[] OPERATOR_KEYS = pack(OPERATOR, CPP_OPERATOR);
     private static final TextAttributesKey[] PARENTHESES_KEYS = pack(PARENTHESES);
     private static final TextAttributesKey[] BRACKETS_KEYS = pack(BRACKETS);
     private static final TextAttributesKey[] BRACES_KEYS = pack(BRACES);
