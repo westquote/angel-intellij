@@ -120,7 +120,14 @@ intellijPlatform {
 
     pluginVerification {
         ides {
-            recommended()
+            // -PverifyIdePath=<IDE install folder> verifies against that local IDE instead,
+            // e.g. a Rider install, since recommended() asks for IntelliJ builds no longer published.
+            val verifyIdePath = providers.gradleProperty("verifyIdePath").orNull
+            if (verifyIdePath != null) {
+                local(file(verifyIdePath))
+            } else {
+                recommended()
+            }
         }
     }
 }
