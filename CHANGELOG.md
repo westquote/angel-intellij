@@ -4,6 +4,11 @@
 
 ## [Unreleased]
 
+## [0.3.1-gs] - 2026-11-04
+
+- Colour .as files from the lexer: keywords, comments, strings, numbers, identifiers, operators and punctuation, editable under Settings > Editor > Color Scheme > AngelScript (previously every token returned no highlight)
+- Fix the bundled language server crashing on every edit with `Notification handler 'textDocument/didChange' failed with message: vN is not a function` (namespace imports of `node:assert` are not callable once esbuild bundles them)
+
 ## [0.3.0] - 2026-09-22
 
 - update language server

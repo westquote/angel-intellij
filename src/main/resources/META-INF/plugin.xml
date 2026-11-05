@@ -37,6 +37,8 @@
         <lang.syntaxHighlighterFactory language="angelscript"
                                        implementationClass="com.sarahshandcraftedentertainment.angelintellij.editor.AngelScriptSyntaxHighlighterFactory"/>
 
+        <colorSettingsPage implementation="com.sarahshandcraftedentertainment.angelintellij.editor.AngelScriptColorSettingsPage"/>
+
         <!--        <lang.quoteHandler language="AngelScript"-->
         <!--                           implementationClass="com.sarahshandcraftedentertainment.angelintellij.editor.AngelScriptQuoteHandler"/>-->
     </extensions>
